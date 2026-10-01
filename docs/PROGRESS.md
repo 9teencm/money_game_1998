@@ -8,8 +8,8 @@
 
 - [x] **T0.1** 建立 Next.js + TypeScript(strict)+ pnpm 專案,加入 Tailwind、ESLint、Prettier、Vitest、Playwright;`package.json` 加上 `CLAUDE.md` 列出的 scripts。<br>2026-10-01 · Next 16.3.7 / React 19 / pnpm 12.8.1;`content:check`、`eval:llm` 先放佔位腳本;ESLint 另加規則擋住引擎 import React/Next。
 - [x] **T0.2** 建立目錄結構與空模組,新增 `docs/PROGRESS.md`(列出本檔所有任務的勾選清單)。<br>2026-10-01 · `src/engine`、`src/llm`、`src/content` 放 `export {}` 佔位模組,每支檔頭註明由哪個任務填實作。
-- [ ] **T0.3** GitHub Actions:lint、typecheck、test、content:check。
-- [ ] **驗收**:CI 綠燈;`pnpm dev` 顯示佔位畫面。
+- [x] **T0.3** GitHub Actions:lint、typecheck、test、content:check。<br>2026-10-01 · `.github/workflows/ci.yml`,單一 job;pnpm 版本由 `package.json` 的 `packageManager` 決定。尚未推上 GitHub,綠燈待驗。
+- [ ] **驗收**:CI 綠燈;`pnpm dev` 顯示佔位畫面。(`pnpm dev` 已可顯示佔位畫面;CI 需等 repo 推上遠端)
 
 ## M1 內容 schema 與資料考據(W1–W3,10/05–10/25)
 
