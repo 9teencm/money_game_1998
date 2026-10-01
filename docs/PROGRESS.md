@@ -28,7 +28,7 @@
 - [ ] **T2.4** 損益、股本、槓桿、融資成本。
 - [ ] **T2.5** 保證金、追繳、強制平倉螺旋。
 - [ ] **T2.6** 衝擊成本、擁擠度、曝光度與被狙擊、系統衝擊累計。
-- [ ] **T2.7** 行動:`reduce`、`hedge`、`letter`、`callBroker`、`callBuyer`、`callFed`、`wait`。
+- [ ] **T2.7** 行動:`reduce`、`hedge`、`letter`、`callBroker`、`callBuyer`、`callReserve`、`wait`。
 - [ ] **T2.8** 事件:PLAN 2.8 的七個事件與限時事件倒數狀態。
 - [ ] **T2.9** 結局判定與評分。
 - [ ] **T2.10** `Agent` 介面、`pnpm sim` 批次執行器、`historical` 與 `earlyDeleverage` 兩個腳本代理人。

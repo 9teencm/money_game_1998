@@ -89,7 +89,7 @@ T2.5 已確認。請先在 tests/engine/margin.test.ts 寫測試(含強制平倉
 
 | key          | 名稱             | 特性                                     |
 | ------------ | ---------------- | ---------------------------------------- |
-| `swapSpread` | 利率交換利差     | 規模最大,所羅門平倉時擁擠度上升          |
+| `swapSpread` | 利率交換利差     | 規模最大,賽佛兄弟平倉時擁擠度上升        |
 | `onOffRun`   | 新舊美國國債套利 | 流動性高,但 flight to quality 時利差擴大 |
 | `equityVol`  | 股票波動率交易   | 8 月後波動率飆升,虧損大                  |
 | `mergerArb`  | 企業合併套利     | 規模中等,與市場恐慌相關                  |
@@ -99,7 +99,7 @@ T2.5 已確認。請先在 tests/engine/margin.test.ts 寫測試(含強制平倉
 
 每類部位有一條「價差」序列 `spreadBp[b][t]`(單位:bp)。
 
-- **基準路徑**:`content/scenario.json` 為每類部位定義關鍵點 `{ date, levelBp }`,中間線性內插。路徑形狀:6–7 月緩慢擴大 → 7 月所羅門事件加速 → 8/17 跳升 → 9/22 前持續擴大 → 9/29 後開始回落。
+- **基準路徑**:`content/scenario.json` 為每類部位定義關鍵點 `{ date, levelBp }`,中間線性內插。路徑形狀:6–7 月緩慢擴大 → 7 月交易商平倉事件加速 → 8/17 跳升 → 9/22 前持續擴大 → 9/29 後開始回落。
 - **雜訊**:每日加上 `N(0, σ_b)`,`σ_b` 在 `params.market.noiseBp`,危機期間乘上 `params.market.crisisNoiseMultiplier`。亂數由帶種子的 `rng` 產生。
 - **事件衝擊**:事件可以對特定部位加一次性跳升或連續數日的漂移(見 2.8)。
 - **被狙擊漂移**:見 2.6。
@@ -133,7 +133,7 @@ impactCost = q × k_b × (q / (liquidity_b × depth_b)) ^ α × (1 + crowding_b)
 ```
 
 - `stress(t)` 在 8/17 前為 1,之後依 `params.market.stressPath` 上升。
-- **擁擠度**:基礎值在 scenario;所羅門事件期間 `swapSpread`、`onOffRun` 的擁擠度上升。
+- **擁擠度**:基礎值在 scenario;`E_DEALER_UNWIND` 期間 `swapSpread`、`onOffRun` 的擁擠度上升。
 - **曝光度** `revealed_b`(0–1):以下行為會提高——寫信揭露(依揭露程度)、談判時的 `disclosureLevel`、單日減碼超過 `params.snipe.largeSaleRatio × liquidity_b × depth_b`。每日依 `params.snipe.decay` 衰減。
 - **被狙擊**:`revealed_b > params.snipe.threshold` 時,接下來每日在該部位加上不利漂移 `params.snipe.driftBp × revealed_b`(對手搶先交易)。
 - **系統衝擊**:每筆成交累加 `impactCost × w`;強制平倉時 `w = 2`,主動減碼 `w = 1`。
@@ -149,7 +149,7 @@ impactCost = q × k_b × (q / (liquidity_b × depth_b)) ^ α × (1 + crowding_b)
 | `letter`     | 揭露程度:`minimal` / `partial` / `full` | 1          | 影響投資人信任與引資成功率;`partial`、`full` 會提高曝光度                                          |
 | `callBroker` | 交易商 NPC                              | 1          | 開啟談判,可爭取較低保證金比例或延長期限                                                            |
 | `callBuyer`  | 收購方 NPC                              | 1.5        | 開啟引資談判;可能觸發限時提案                                                                      |
-| `callFed`    | —                                       | 2          | 9/18 後才可用;提高紓困事件提前發生的機率                                                           |
+| `callReserve`    | —                                       | 2          | 聯絡儲備理事會;9/18 後才可用;提高紓困事件提前發生的機率                                           |
 | `wait`       | —                                       | —          | 不做事,等待收盤                                                                                    |
 
 MVP 中 `letter` 用三種預設揭露程度;v2 才改成 LLM 寫信與判讀玩家回覆。
@@ -159,11 +159,11 @@ MVP 中 `letter` 用三種預設揭露程度;v2 才改成 LLM 寫信與判讀玩
 | id                  | 時間                         | 觸發條件                                                      | 效果                                                     |
 | ------------------- | ---------------------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
 | `E_ASIA_AFTERSHOCK` | 6 月起                       | 固定                                                          | `emDebt`、`equityVol` 小幅漂移;相關新聞鏈                |
-| `E_SALOMON_UNWIND`  | 7 月                         | 固定                                                          | `swapSpread`、`onOffRun` 擁擠度上升、價差擴大            |
+| `E_DEALER_UNWIND`   | 7 月                         | 固定                                                          | `swapSpread`、`onOffRun` 擁擠度上升、價差擴大            |
 | `E_RUSSIA_DEFAULT`  | 1998-08-17                   | 固定                                                          | `emDebt` 跳升;所有部位價差擴大、流動性下降;`stress` 上升 |
 | `E_INVESTOR_QUERY`  | 1998-09-02                   | 玩家尚未寫信時                                                | 投資人要求說明,自動暫停,玩家選擇揭露程度                 |
 | `E_BUYER_OFFER`     | 9 月                         | 玩家打過 `callBuyer` 且股本低於門檻                           | 限時提案(1x 下 90 秒真實時間),條款由 NPC 人設決定        |
-| `E_CONSORTIUM`      | 1998-09-23(`callFed` 可提前) | 股本低於 `params.events.consortiumEquityThreshold` 且尚未解決 | 銀行團注資 3,625 usdM 換 90% 股權;接受 → 結局 B          |
+| `E_CONSORTIUM`      | 1998-09-23(`callReserve` 可提前) | 股本低於 `params.events.consortiumEquityThreshold` 且尚未解決 | 銀行團注資 3,625 usdM 換 90% 股權;接受 → 結局 B          |
 | `E_FED_CUT`         | 1998-09-29                   | 固定                                                          | 價差基準路徑開始回落(收斂回報)                           |
 
 ### 2.9 新聞與線索
@@ -171,7 +171,7 @@ MVP 中 `letter` 用三種預設揭露程度;v2 才改成 LLM 寫信與判讀玩
 - 四種管道:`paper`(早報)、`terminal`(盤中快訊)、`rumor`(同業電話)、`riskReport`(每週五的內部風控報告,由引擎依狀態產生)。
 - 每則新聞只標示管道與來源,不標示真假;內部欄位 `credibility` 為 `fact` / `rumor` / `noise`。
 - `affects` 欄位描述新聞對價差的影響,引擎依此在指定延遲後施加漂移(rumor 為 false 時不施加)。
-- 線索鏈 `chainId`:同一事件分多則、多管道釋出。MVP 至少 4 條:亞洲餘波、所羅門平倉、俄羅斯財政、融資收緊。
+- 線索鏈 `chainId`:同一事件分多則、多管道釋出。MVP 至少 4 條:亞洲餘波、交易商平倉、俄羅斯財政、融資收緊。
 - `isFiction: false` 的條目必須有 `sourceUrl`;所有文字自行改寫。
 
 ### 2.10 提示系統與難度
@@ -260,7 +260,7 @@ export interface LLMProvider {
 
 - 只放 `releaseDate <= state.date` 的新聞、事件、玩家行動紀錄。
 - 注入遊戲內日期(「今天是 1998 年 X 月 X 日」)與 NPC 人設卡。
-- 角色、基金、銀行全部用化名;真實名稱只允許出現在 debrief。
+- 角色、基金、銀行全部用化名(見 4.5);真實名稱只允許出現在 debrief。
 - 單次上下文上限 `params.llm.maxContextItems` 則新聞,超過時取最近與最相關的。
 
 ### 3.4 輸出 Schema(Zod)
@@ -397,7 +397,7 @@ export interface Agent {
 ```json
 {
   "id": "npc_buyer",
-  "displayName": "(化名待定)",
+  "displayName": "梅瑞頓資本",
   "role": "buyer",
   "persona": "說話直接、重視速度與控制權,不喜歡冗長的解釋。",
   "hidden": {
@@ -420,6 +420,22 @@ export interface Agent {
 - `content/scenario.json`:開局狀態、交易日曆、各部位基準路徑關鍵點、固定事件。
 - `content/spoilers.json`:`[{ term, unlockDate, appliesTo: ["advisor", "negotiator"] }]`。
 - `content/fallback/`:談判選項式對話、顧問提醒句、debrief 樣板。
+
+### 4.5 化名表
+
+鐵律 9 的化名定案(2026-10-02)。風格為西式音譯;下表之外不得在遊戲內出現任何真實機構或人名,真實名稱只允許出現在結局畫面的「史實對照」與資料來源。
+
+| 遊戲內角色          | 化名                                    | 對應史實(僅供作者參考,不得進遊戲)   |
+| ------------------- | --------------------------------------- | -------------------------------------- |
+| 玩家的基金          | 凱斯隆資本管理 Kesslon Capital Management | LTCM                                   |
+| 7 月平倉引爆者      | 賽佛兄弟 Seaver Brothers                | 某大型交易商的自營部位平倉             |
+| 交易商 `npc_broker` | 凱德瑞證券 Caldrey Securities           | 主要經紀商                             |
+| 收購方 `npc_buyer`  | 梅瑞頓資本 Merriton Capital             | 1998 年 9 月的收購提案方               |
+| 風控長顧問          | 凡恩 Vane                               | 虛構                                   |
+| 銀行團              | 十四家交易商銀行團                      | 1998-09-23 的銀行團                    |
+| 央行                | 儲備理事會                              | 聯準會 / 紐約聯邦準備銀行              |
+
+查證結果:凱斯隆、凱德瑞、梅瑞頓查無同名金融機構。原先考慮的「德溫特 Derwent」撞到 Derwent Capital Markets 與 Derwent London、「蘭斯福 Lansford」與 Lunsford Capital 音近,兩者皆已棄用。日後新增角色一律先查過再寫進 content。
 
 ---
 
@@ -494,7 +510,7 @@ LLM 評測目標:JSON 有效率(含重試)≥ 98%;超出底線的提議被接受
 - **T2.4** 損益、股本、槓桿、融資成本。
 - **T2.5** 保證金、追繳、強制平倉螺旋。
 - **T2.6** 衝擊成本、擁擠度、曝光度與被狙擊、系統衝擊累計。
-- **T2.7** 行動:`reduce`、`hedge`、`letter`、`callBroker`、`callBuyer`、`callFed`、`wait`(談判結果先用固定規則,M4 再接 LLM)。
+- **T2.7** 行動:`reduce`、`hedge`、`letter`、`callBroker`、`callBuyer`、`callReserve`、`wait`(談判結果先用固定規則,M4 再接 LLM)。
 - **T2.8** 事件:第 2.8 節七個事件與限時事件的倒數狀態。
 - **T2.9** 結局判定與評分。
 - **T2.10** `Agent` 介面、`pnpm sim` 批次執行器、`historical` 與 `earlyDeleverage` 兩個腳本代理人。
@@ -575,7 +591,7 @@ LLM 評測目標:JSON 有效率(含重試)≥ 98%;超出底線的提議被接受
 
 1. 6/1 開局數值(股本約 4,400 usdM、槓桿約 28 倍)是從年初約 4,700 usdM 與 5 月 −6.42% 推估的,需要再核對。
 2. 「未引資撐到 9/30 但系統衝擊過高」評為 A,是否合適?
-3. 基金、角色、銀行的化名(需確認不與真實機構同名)。
+3. ~~基金、角色、銀行的化名(需確認不與真實機構同名)。~~ 2026-10-02 定案,見 4.5。
 4. LLM 供應商、模型與每月預算上限。
 5. 學期實際起訖日(時程目前假設 2026-10-05 開始)。
 6. 收購方提案的觸發條件與條款範圍。
