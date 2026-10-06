@@ -15,7 +15,7 @@
 
 ## M1 內容 schema 與資料考據(W1–W3,10/05–10/25)
 
-- [ ] **T1.1** 在 `src/content/schemas.ts` 定義新聞、NPC、史實、params、scenario、fallback、spoilers 的 Zod schema,並實作 `pnpm content:check`。
+- [x] **T1.1** 在 `src/content/schemas.ts` 定義新聞、NPC、史實、params、scenario、fallback、spoilers 的 Zod schema,並實作 `pnpm content:check`。<br>2026-10-06 · zod 4.6.5。schema 除了型別還擋三件事:鐵律 7(`isFiction:false` 必須有 `sourceUrl`)、`tradingDays` 不得有週末 / 亂序 / 超出遊戲期間、五類部位必須齊全。`content:check` 另做跨檔案檢查(新聞 id 重複、T1.3 的線索鏈 ≥3 則且跨 ≥2 管道),並吃掉 Windows 編輯器留下的 BOM。`npc.hidden` 與 fallback 的結構先放寬,等 T3.7 / T4.4 定案再收緊。
 - [ ] **T1.2** 建立範例資料:10 則新聞、2 張 NPC 人設卡、史實條目、`params.json` 預設值、`scenario.json`(含 1998/6/1–9/30 交易日曆)。
 - [ ] **T1.3** 完成 40–60 則新聞、4 條線索鏈、5 類部位的基準路徑關鍵點(以人工為主)。
 - [ ] **驗收**:`content:check` 通過;每條線索鏈至少 3 則、跨 2 種以上管道。

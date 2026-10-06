@@ -8,6 +8,15 @@ const eslintConfig = defineConfig([
   ...nextTs,
   prettier,
   {
+    // 底線開頭代表「刻意不用」,常見於解構時要丟掉某個欄位。
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", ignoreRestSiblings: true },
+      ],
+    },
+  },
+  {
     // 架構鐵律 2:引擎是純函式,不得 import React / Next / 做 I/O
     files: ["src/engine/**/*.ts"],
     rules: {
