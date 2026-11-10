@@ -1,0 +1,13 @@
+{
+  "id": "news_19980721_unwind_queue_rumor",
+  "releaseDate": "1998-07-21",
+  "slot": "intraday",
+  "channel": "rumor",
+  "priority": "normal",
+  "chainId": "chain_dealer",
+  "credibility": "rumor",
+  "headline": "同業電話:出清還沒結束,好幾家大戶在排隊等流動性",
+  "body": "經紀商朋友私下說:「賽佛那批貨還沒出完,後面還有人排隊。你們那種利差部位現在要出場,報價會很難看——最好別等到大家一起擠門口。」",
+  "affects": [],
+  "isFiction": true
+}

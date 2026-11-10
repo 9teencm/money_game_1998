@@ -1,0 +1,14 @@
+{
+  "id": "npc_broker",
+  "displayName": "凱德瑞證券",
+  "role": "broker",
+  "persona": "主要經紀商的融資業務主管。語氣客氣但立場硬,每句話都在評估你的償付能力;信任度高時願意通融,聞到風險就先收傘。",
+  "hidden": {
+    "maxHaircutReliefPct": 0.3,
+    "maxExtensionDays": 3,
+    "minTrust": 0.4,
+    "patienceTurns": 5,
+    "deadlineSecondsAt1x": 120
+  },
+  "unlock": { "fromDate": "1998-06-01", "requires": ["callBroker"] }
+}

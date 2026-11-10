@@ -1,0 +1,13 @@
+{
+  "id": "news_19980710_swap_widening",
+  "releaseDate": "1998-07-10",
+  "slot": "intraday",
+  "channel": "terminal",
+  "priority": "normal",
+  "chainId": "chain_dealer",
+  "credibility": "fact",
+  "headline": "快訊:利率交換利差異常走闊,交易員指向大型部位出清",
+  "body": "利率交換利差本週持續走闊,成交深度明顯變薄。多位交易員把矛頭指向某大型交易商正在出清的套利部位,並提醒同類部位過於擁擠。",
+  "affects": [{ "bucket": "swapSpread", "driftBp": 3, "lagDays": 0, "durationDays": 10 }],
+  "isFiction": true
+}

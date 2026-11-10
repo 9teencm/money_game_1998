@@ -1,0 +1,70 @@
+[
+  {
+    "id": "hf_may_return",
+    "date": "1998-05-31",
+    "statement": "LTCM 1998 年 5 月單月報酬約 −6.42%,是基金成立以來最差的單月之一。",
+    "numbers": { "monthlyReturnPct": -6.42 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_june_return",
+    "date": "1998-06-30",
+    "statement": "LTCM 1998 年 6 月單月報酬約 −10.14%,連續第二個月大幅虧損。",
+    "numbers": { "monthlyReturnPct": -10.14 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_salomon_unwind",
+    "date": "1998-07-06",
+    "statement": "1998 年 7 月,Salomon Smith Barney 宣布退出美國固定收益套利業務並出清部位,使利率套利類價差承壓、同類部位的擁擠度問題浮現。",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_russia_default",
+    "date": "1998-08-17",
+    "statement": "1998 年 8 月 17 日,俄羅斯宣布盧布貶值並對國內短期公債(GKO)暫停償付,引發全球 flight to quality。",
+    "sourceUrl": "https://en.wikipedia.org/wiki/1998_Russian_financial_crisis"
+  },
+  {
+    "id": "hf_aug_loss",
+    "date": "1998-08-31",
+    "statement": "LTCM 1998 年 8 月單月虧損約 44%(約 18.5 億美元),其中 8 月 21 日單日虧損約 5.5 億美元。",
+    "numbers": { "monthlyReturnPct": -44, "monthlyLossUsdM": 1850, "aug21LossUsdM": 550 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_sep1_equity",
+    "date": "1998-09-01",
+    "statement": "1998 年 9 月初,LTCM 股本降到約 23 億美元,槓桿倍數因分母縮水而被動飆高。",
+    "numbers": { "equityUsdM": 2300 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_sep25_equity",
+    "date": "1998-09-25",
+    "statement": "到 1998 年 9 月 25 日,LTCM 股本只剩約 4 億美元,槓桿超過 250 倍。",
+    "numbers": { "equityUsdM": 400 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  },
+  {
+    "id": "hf_bailout",
+    "date": "1998-09-23",
+    "statement": "1998 年 9 月 23 日,在紐約聯邦準備銀行協調下,14 家銀行與券商合計注資 36.25 億美元,換取 LTCM 90% 股權;這是民間注資,不是公帑紓困。",
+    "numbers": { "injectionUsdM": 3625, "equityTakenPct": 90, "consortiumSize": 14 },
+    "sourceUrl": "https://www.federalreservehistory.org/essays/ltcm-near-failure"
+  },
+  {
+    "id": "hf_fed_cut",
+    "date": "1998-09-29",
+    "statement": "1998 年 9 月 29 日,FOMC 將聯邦資金利率目標調降 25 個基點至 5.25%,其後數月價差逐步收斂。",
+    "numbers": { "cutBp": 25, "targetRatePct": 5.25 },
+    "sourceUrl": "https://www.federalreservehistory.org/essays/ltcm-near-failure"
+  },
+  {
+    "id": "hf_loss_composition",
+    "date": "1998-09-30",
+    "statement": "LTCM 的虧損中,利率交換相關約 16 億美元、股票波動率相關約 13 億美元,是前兩大虧損來源。",
+    "numbers": { "swapLossUsdM": 1600, "equityVolLossUsdM": 1300 },
+    "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+  }
+]

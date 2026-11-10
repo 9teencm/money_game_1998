@@ -1,0 +1,18 @@
+{
+  "id": "news_19980821_flight_to_quality",
+  "releaseDate": "1998-08-21",
+  "slot": "intraday",
+  "channel": "terminal",
+  "priority": "major",
+  "chainId": "chain_russia",
+  "credibility": "fact",
+  "headline": "快訊:信用利差全面走闊,資金擠向最新發行的美國公債",
+  "body": "俄羅斯違約引發的避險潮擴散到所有風險資產:信用利差、交換利差同步走闊,新舊券利差跳升。交易員形容「所有套利部位同時反向」,流動性急速蒸發。",
+  "affects": [
+    { "bucket": "onOffRun", "driftBp": 6, "lagDays": 0, "durationDays": 10 },
+    { "bucket": "swapSpread", "driftBp": 8, "lagDays": 0, "durationDays": 10 },
+    { "bucket": "equityVol", "driftBp": 4, "lagDays": 0, "durationDays": 10 }
+  ],
+  "isFiction": false,
+  "sourceUrl": "https://en.wikipedia.org/wiki/Long-Term_Capital_Management"
+}

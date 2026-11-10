@@ -1,0 +1,16 @@
+{
+  "id": "news_19980706_seaver_exit",
+  "releaseDate": "1998-07-06",
+  "slot": "premarket",
+  "channel": "paper",
+  "priority": "major",
+  "chainId": "chain_dealer",
+  "credibility": "fact",
+  "headline": "賽佛兄弟宣布關閉債券套利部門,將出清所有部位",
+  "body": "大型交易商賽佛兄弟宣布退出固定收益套利業務,旗下部位將在未來數週內出清。該部門與多家套利基金持有高度相似的利差部位,市場關注出清期間的價格壓力。",
+  "affects": [
+    { "bucket": "swapSpread", "driftBp": 5, "lagDays": 0, "durationDays": 15 },
+    { "bucket": "onOffRun", "driftBp": 2, "lagDays": 0, "durationDays": 15 }
+  ],
+  "isFiction": true
+}

@@ -1,0 +1,83 @@
+{
+  "clock": { "secondsPerDayAt1x": 20, "intradayBudgetHours": 6.5 },
+  "market": {
+    "sensitivity": {
+      "swapSpread": 0.0005,
+      "onOffRun": 0.0006,
+      "equityVol": 0.003,
+      "mergerArb": 0.0009,
+      "emDebt": 0.00003
+    },
+    "noiseBp": {
+      "swapSpread": 1.5,
+      "onOffRun": 1,
+      "equityVol": 1.5,
+      "mergerArb": 1,
+      "emDebt": 20
+    },
+    "crisisNoiseMultiplier": 2.5,
+    "stressPath": [
+      { "date": "1998-06-01", "stress": 1 },
+      { "date": "1998-08-14", "stress": 1 },
+      { "date": "1998-08-17", "stress": 1.5 },
+      { "date": "1998-09-22", "stress": 2.5 },
+      { "date": "1998-09-30", "stress": 2.2 }
+    ],
+    "financingRateAnnual": 0.055,
+    "impact": {
+      "k": {
+        "swapSpread": 0.4,
+        "onOffRun": 0.3,
+        "equityVol": 0.6,
+        "mergerArb": 0.5,
+        "emDebt": 0.8
+      },
+      "depthUsdM": {
+        "swapSpread": 20000,
+        "onOffRun": 25000,
+        "equityVol": 8000,
+        "mergerArb": 10000,
+        "emDebt": 3000
+      },
+      "alpha": 1.5
+    }
+  },
+  "margin": {
+    "haircut": {
+      "swapSpread": 0.01,
+      "onOffRun": 0.005,
+      "equityVol": 0.05,
+      "mergerArb": 0.03,
+      "emDebt": 0.1
+    },
+    "trustPenalty": 2,
+    "forcedSaleImpactMultiplier": 2,
+    "curePeriodDays": 1
+  },
+  "snipe": { "largeSaleRatio": 0.1, "decay": 0.9, "threshold": 0.5, "driftBp": 2 },
+  "hedge": {
+    "maxRatio": 0.8,
+    "upfrontCostRate": 0.002,
+    "dailyCarryRate": 0.0001,
+    "crisisEffectiveness": 0.6
+  },
+  "events": {
+    "consortiumEquityThreshold": 1000,
+    "buyerOfferEquityThreshold": 1500,
+    "offerDeadlineSecondsAt1x": 90
+  },
+  "hints": {
+    "thresholds": {
+      "leverage": { "warn": 30, "danger": 40 },
+      "freeCashUsdM": { "warn": 500, "danger": 100 },
+      "crowding": { "warn": 0.6, "danger": 0.8 }
+    }
+  },
+  "endings": { "sImpactThreshold": 500, "scoreLambda": 0.5 },
+  "llm": { "maxContextItems": 12, "maxCallsPerRun": 40 },
+  "difficulty": {
+    "novice": { "advisorNudges": "frequent", "helpCount": 5, "showAffects": true },
+    "standard": { "advisorNudges": "keyMoments", "helpCount": 2, "showAffects": false },
+    "historical": { "advisorNudges": "off", "helpCount": 0, "showAffects": false }
+  }
+}

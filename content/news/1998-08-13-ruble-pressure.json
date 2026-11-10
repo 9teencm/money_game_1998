@@ -1,0 +1,14 @@
+{
+  "id": "news_19980813_ruble_pressure",
+  "releaseDate": "1998-08-13",
+  "slot": "premarket",
+  "channel": "paper",
+  "priority": "normal",
+  "chainId": "chain_russia",
+  "credibility": "fact",
+  "headline": "俄羅斯公債殖利率飆升,政府重申不會讓盧布貶值",
+  "body": "俄羅斯短期公債殖利率升破三位數,股市重挫,外界質疑外匯存底是否足以守住匯率。俄國官員公開否認貶值與違約的可能性,但資金持續外逃。",
+  "affects": [{ "bucket": "emDebt", "driftBp": 60, "lagDays": 0, "durationDays": 2 }],
+  "isFiction": false,
+  "sourceUrl": "https://en.wikipedia.org/wiki/1998_Russian_financial_crisis"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "news_19980617_yen_intervention",
+  "releaseDate": "1998-06-17",
+  "slot": "intraday",
+  "channel": "terminal",
+  "priority": "normal",
+  "chainId": "chain_asia",
+  "credibility": "fact",
+  "headline": "快訊:美日聯手進場買日圓,匯市劇烈震盪",
+  "body": "美國與日本當局罕見聯手干預匯市支撐日圓。日圓急升,但交易員質疑效果能維持多久,新興市場債券利差並未明顯收斂。",
+  "affects": [{ "bucket": "emDebt", "driftBp": -15, "lagDays": 0, "durationDays": 3 }],
+  "isFiction": false,
+  "sourceUrl": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+}

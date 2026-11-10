@@ -1,0 +1,17 @@
+{
+  "id": "news_19980817_russia_default",
+  "releaseDate": "1998-08-17",
+  "slot": "premarket",
+  "channel": "paper",
+  "priority": "major",
+  "chainId": "chain_russia",
+  "credibility": "fact",
+  "headline": "俄羅斯宣布暫停償付國內短期公債,盧布擴大貶值區間",
+  "body": "俄羅斯政府今日宣布盧布貶值並對國內短期公債暫停償付,同時凍結部分對外支付。新興市場資產全面重挫,資金湧向美國公債避險。",
+  "affects": [
+    { "bucket": "emDebt", "driftBp": 250, "lagDays": 0, "durationDays": 3 },
+    { "bucket": "swapSpread", "driftBp": 12, "lagDays": 1, "durationDays": 10 }
+  ],
+  "isFiction": false,
+  "sourceUrl": "https://en.wikipedia.org/wiki/1998_Russian_financial_crisis"
+}

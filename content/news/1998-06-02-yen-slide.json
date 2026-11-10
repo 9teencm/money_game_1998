@@ -1,0 +1,14 @@
+{
+  "id": "news_19980602_yen_slide",
+  "releaseDate": "1998-06-02",
+  "slot": "premarket",
+  "channel": "paper",
+  "priority": "normal",
+  "chainId": "chain_asia",
+  "credibility": "fact",
+  "headline": "日圓續貶逼近八年低點,亞洲市場賣壓再起",
+  "body": "日圓兌美元持續走貶,市場擔心亞洲金融風暴的餘波未平。區域股匯市同步走弱,資金轉向美國公債等避險資產。",
+  "affects": [{ "bucket": "emDebt", "driftBp": 10, "lagDays": 1, "durationDays": 5 }],
+  "isFiction": false,
+  "sourceUrl": "https://en.wikipedia.org/wiki/1997_Asian_financial_crisis"
+}

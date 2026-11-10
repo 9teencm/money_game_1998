@@ -1,0 +1,13 @@
+{
+  "id": "npc_buyer",
+  "displayName": "梅瑞頓資本",
+  "role": "buyer",
+  "persona": "收購方的談判代表。說話直接、重視速度與控制權,不喜歡冗長的解釋;開價一定留殺價空間,但對拖延零容忍。",
+  "hidden": {
+    "maxCapitalUsdM": 4000,
+    "minEquityPct": 60,
+    "patienceTurns": 6,
+    "deadlineSecondsAt1x": 90
+  },
+  "unlock": { "fromDate": "1998-09-01", "requires": ["callBuyer"] }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "news_19980904_tech_earnings_noise",
+  "releaseDate": "1998-09-04",
+  "slot": "premarket",
+  "channel": "paper",
+  "priority": "normal",
+  "credibility": "noise",
+  "headline": "科技股財報優於預期,分析師樂觀看待年底行情",
+  "body": "多家大型科技公司公布的季度財報優於市場預期,帶動指數反彈。有分析師認為近期的市場動盪只是「健康的修正」,年底前可望收復失土。",
+  "affects": [],
+  "isFiction": true
+}

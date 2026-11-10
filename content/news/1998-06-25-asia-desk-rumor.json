@@ -1,0 +1,13 @@
+{
+  "id": "news_19980625_asia_desk_rumor",
+  "releaseDate": "1998-06-25",
+  "slot": "intraday",
+  "channel": "rumor",
+  "priority": "normal",
+  "chainId": "chain_asia",
+  "credibility": "rumor",
+  "headline": "同業電話:幾家外資行在悄悄砍亞洲與新興市場部位",
+  "body": "一位相熟的交易員來電:「別只看日圓,聽說有兩三家外資行的新興市場檯子被總部下令縮表,流動性比報價螢幕上看到的差很多。」",
+  "affects": [],
+  "isFiction": true
+}
